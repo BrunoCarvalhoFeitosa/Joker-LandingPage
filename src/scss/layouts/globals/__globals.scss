@@ -1,0 +1,66 @@
+@import "./_colors";
+@import "./_mixins";
+@import "./_fonts";
+
+* {
+    margin: 0rem;
+    padding: 0rem;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes animationSaturate {
+    0%,
+    100% {
+        filter: invert(0%);
+    }
+
+    50% {
+        filter: invert(100%);
+    }
+}
+
+@keyframes animateCoverFilm {
+    0%, 100% {
+        background-position: top;
+    }
+    45%, 55% {
+        background-position: bottom;
+    }
+}
+
+@keyframes animationShake {
+    0%,
+    100% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+@keyframes animationPlay {
+    0%, 
+    100% {
+        transform: scale(.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+::selection {
+    background: $selection;
+}
+ ::-moz-selection {
+    background: $selection;
+}

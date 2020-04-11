@@ -1,0 +1,242 @@
+@import "./layouts/globals/__globals";
+@import "./layouts/globals/__fonts";
+@import "./layouts/globals/__mixins";
+@import "./layouts/globals/__colors";
+@import "./layouts/globals/__header";
+
+.b-container {
+    &__banner {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url("../assets/background-primary.jpg");
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        @include animation(animationSaturate 20s 30s infinite);
+        
+        @include for-all {
+            background-position: right;
+        }
+
+        &-content {
+            @include px-for-rem(600, max-width);
+            @include transform(translateX(6.25rem));
+            
+            @include for-plus-tablet {
+                @include px-for-rem(700, max-width);
+                @include transform(translate(6.125rem, -7rem));
+            }
+
+            @include for-tablet {
+                @include transform(translate(3.125rem, -7.75rem) !important);
+            }
+
+            @include for-all {
+                @include px-for-rem(500, max-width);
+                @include transform(translateX(1.5rem));
+            }
+
+            @include for-mobile {
+                margin: 0 auto;
+                @include transform(translateY(-3.25rem));
+                @include px-for-rem(340, max-width);
+            }
+            
+            @include for-iphone5 {
+                @include px-for-rem(290, max-width);
+            }
+
+            > h2.b-title {
+                @include px-for-rem(26, font-size);
+                font-weight: 400;
+                text-transform: uppercase;
+                @include px-for-rem(1, letter-spacing);
+                color: $white;
+                span {
+                    font-weight: 800;
+                }
+
+                @include for-plus-tablet {
+                    @include px-for-rem(40, font-size);
+                }
+
+                @include for-tablet {
+                    @include px-for-rem(38, font-size);
+                }
+                
+                @include for-iphone5 {
+                    @include px-for-rem(20, font-size);
+                }
+            }
+            p.b-description {
+                @include px-for-rem(18, font-size);
+                font-weight: 300;
+                @include px-for-rem(1, letter-spacing);
+                @include px-for-rem(6, margin-bottom);
+                color: $white;
+                
+                @include for-tablet {
+                    @include px-for-rem(26, font-size);
+                }
+                
+                @include for-plus-tablet {
+                    @include px-for-rem(36, font-size);
+                }
+                
+                @include for-mobile {
+                    @include px-for-rem(16, font-size);
+                    margin: .9375rem 0 1.1875rem;
+                }
+                
+                @include for-iphone5 {
+                    @include px-for-rem(14, font-size);
+                }
+            }
+            p.b-author {
+                @include px-for-rem(26, margin-bottom);
+                color: $white;
+                span {
+                    font-family: 'Pacifico', cursive;
+                    @include px-for-rem(1, letter-spacing);
+                }
+            }
+            a {
+                position: relative;
+                display: inline-flex;
+                justify-content: flex-start;
+                align-items: center;
+                @include px-for-rem(20, font-size);
+                font-weight: 500;
+                text-decoration: none;
+                @include px-for-rem(2, letter-spacing);
+                color: $white;
+                img {
+                    @include animation(animationPlay 2s infinite);
+                    @include px-for-rem(44, max-width);
+                    @include px-for-rem(10, margin-right);
+                }
+                
+                @include for-plus-tablet {
+                    @include px-for-rem(36, font-size);
+                }
+
+                @include for-tablet {
+                    @include px-for-rem(26, font-size);
+                }
+            }
+        }
+        &__slider {
+            position: absolute;
+            @include px-for-rem(50, bottom);
+            left: 50%;
+            transform: translateX(-50%) perspective(500px);
+            @include px-for-rem(300, width);
+            @include px-for-rem(170, height);
+            transform-style: preserve-3d;
+            overflow: hidden;
+            cursor: pointer;
+            &:hover {
+                @include filter(drop-shadow(.5rem .5rem 6.25rem $shadow));
+                @include transition(.7s filter);
+            }
+            &-front {
+                position: absolute;
+                top: 0rem;
+                left: 0rem;
+                width: 100%;
+                height: 100%;
+                background: url("../assets/background-preview.png") no-repeat;
+                background-size: cover;
+                backface-visibility: hidden;
+                @include animation(animateCoverFilm 13s linear infinite);
+                &:hover {
+                    @include transform(scale(1.3));
+                    @include transition(1.2s transform);
+                }
+            }
+            &-back {
+                position: absolute;
+                top: 0rem;
+                left: 0rem;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                background: red;
+                transform: rotateY(180deg);
+            }
+            
+            @include for-plus-tablet {
+                @include px-for-rem(420, width);
+                @include px-for-rem(280, height);
+                @include px-for-rem(100, bottom);
+            }
+
+            @include for-tablet {
+                @include px-for-rem(350, width);
+                @include px-for-rem(200, height);
+                @include px-for-rem(86, bottom);
+            }
+            
+            @include for-mobile {
+                @include px-for-rem(30, bottom);
+            }
+            
+            @include for-iphone5 {
+                @include px-for-rem(230, width);
+                @include px-for-rem(140, height);
+            }
+        }
+    }
+    &__trailer {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background: $overlay;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 9999;
+        video {
+            @include px-for-rem(900, max-width);
+            outline: none;
+            [poster] {
+                object-fit: fill;
+            }
+            
+            @include for-tablet {
+                max-width: 90%;
+            }
+
+            @include for-mobile {
+                max-width: 90%;
+            }
+        }
+        span {
+            position: absolute;
+            @include px-for-rem(10, top);
+            @include px-for-rem(20, right);
+            @include px-for-rem(40, font-size);
+            @include transform(scale(0.85));
+            opacity: .82;
+            color: $white;
+            cursor: pointer;
+            &:hover {
+                @include transform(scale(1));
+                opacity: .96;
+                @include transition(.23s);
+            }
+        }
+    }
+    &__trailer.trailer--active {
+        visibility: visible;
+        opacity: 1;
+    }   
+}

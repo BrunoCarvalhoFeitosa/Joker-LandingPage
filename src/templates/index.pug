@@ -1,0 +1,24 @@
+include subtemplates/__header.pug
+
+section.b-container
+    section.b-container__banner
+        section.b-container__banner-content
+            h2.b-title
+              | Put on a  
+              span Happy 
+              | face
+            p.b-description Isolated, intimidated and disregarded by society, the failed comedian Arthur Fleck starts his way as a criminal mind after murdering three men in the middle of the subway. His action starts a popular movement against the elite of Gotham City, of which Thomas Wayne is its greatest representative.
+            p.b-author Made by 
+                | 
+                span Bruno Carvalho Feitosa
+            a(href="#")
+                img(src="../assets/icon-play.png")/ Watch Trailer
+    section.b-container__banner__slider
+        div.b-container__banner__slider-front
+    section.b-container__trailer
+        video(poster="../assets/background-poster.jpg", controls="true")
+            source(src="../assets/video-joker.mp4", type="video/mp4")
+        span X
+
+script(src="../../js/index.js")
+    

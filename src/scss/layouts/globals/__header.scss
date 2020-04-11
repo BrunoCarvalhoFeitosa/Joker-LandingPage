@@ -1,0 +1,43 @@
+@import "./_globals";
+@import "./_mixins";
+
+.b-header {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 2.5rem 6.25rem;
+    z-index: 1000;
+
+    @include for-tablet {
+        padding: 2rem 3rem !important;
+    }
+
+    @include for-all {
+        padding: 1.25rem 1.5rem;
+    }
+
+    &__brand {
+        a {
+            img {
+                @include px-for-rem(120, max-width);
+                animation: animationShake 2s infinite, animationSaturate 30s 30s infinite;
+                
+                @include for-plus-tablet {
+                    @include px-for-rem(140, max-width);
+                }
+
+                @include for-tablet {
+                    @include px-for-rem(120, max-width);
+                }
+
+                @include for-all {
+                    @include px-for-rem(80, max-width);
+                }
+            }
+        }       
+    }
+}
